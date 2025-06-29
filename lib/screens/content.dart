@@ -42,7 +42,7 @@ class MainContent extends StatelessWidget {
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: const Color.fromRGBO(255, 255, 255, 0.7),
+                    color: const Color.fromRGBO(0, 0, 0, 0.502),
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(24),
                     ),
@@ -89,7 +89,7 @@ class MainContent extends StatelessWidget {
         Expanded(
           child: Container(
             decoration: BoxDecoration(
-              color: const Color.fromRGBO(255, 255, 255, 0.7),
+              color: const Color.fromRGBO(0, 0, 0, 0.5),
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(24),
                 bottomRight: Radius.circular(24),
@@ -110,7 +110,9 @@ class MainContent extends StatelessWidget {
                   // Image Holder
                   Expanded(
                     child: GlassSidebar(
+                      height: double.infinity,
                       padding: EdgeInsets.all(0),
+                      scaleFactor: 1.005,
                       child: Container(
                         padding: const EdgeInsets.all(8),
                         child: Container(
@@ -132,19 +134,19 @@ class MainContent extends StatelessWidget {
                       children: [
                         Text(
                           selectedGame!.developer,
-                          style: TextStyle(fontSize: 17, fontFamily: "inter"),
+                          style: TextStyle(fontSize: 17, fontFamily: "inter", color: Colors.white),
                         ),
                         Container(
                           width: 6,
                           height: 6,
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(51, 45, 72, 1),
+                            color: Colors.white,
                             shape: BoxShape.circle,
                           ),
                         ),
                         Text(
                           selectedGame!.releaseYear,
-                          style: TextStyle(fontSize: 17, fontFamily: "inter"),
+                          style: TextStyle(fontSize: 17, fontFamily: "inter", color: Colors.white),
                         ),
                       ],
                     ),
@@ -153,6 +155,8 @@ class MainContent extends StatelessWidget {
                   // Genre, Size, & Location
                   GlassSidebar(
                     padding: EdgeInsets.all(0),
+                    scaleFactor: 1.005,
+                    
                     child: Container(
                       width: double.infinity,
                       padding: EdgeInsets.symmetric(
@@ -169,16 +173,16 @@ class MainContent extends StatelessWidget {
                         children: [
                           Text(
                             selectedGame!.genre,
-                            style: TextStyle(fontSize: 17, fontFamily: "inter"),
+                            style: TextStyle(fontSize: 17, fontFamily: "inter", color: Colors.white),
                           ),
                           Text(
                             selectedGame!.size,
-                            style: TextStyle(fontSize: 17, fontFamily: "inter"),
+                            style: TextStyle(fontSize: 17, fontFamily: "inter", color: Colors.white),
                           ),
 
                           Text(
                             selectedGame!.folderPath,
-                            style: TextStyle(fontSize: 17, fontFamily: "inter"),
+                            style: TextStyle(fontSize: 17, fontFamily: "inter", color: Colors.white),
                           ),
                         ],
                       ),
@@ -194,7 +198,10 @@ class MainContent extends StatelessWidget {
                       borderRadius: BorderRadius.circular(24),
                     ),
                     child: GlassSidebar(
+                      height: double.infinity,
+                      width: double.infinity,
                       padding: EdgeInsets.all(0),
+                      scaleFactor: 1.005,
                       child: Container(
                         padding: const EdgeInsets.only(
                           left: 16,
@@ -212,6 +219,7 @@ class MainContent extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 17,
                                   fontFamily: "inter",
+                                  color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -224,6 +232,7 @@ class MainContent extends StatelessWidget {
                                   selectedGame!.description,
                                   style: TextStyle(
                                     fontSize: 16,
+                                    color: Colors.white,
                                     fontFamily: "inter",
                                   ),
                                 ),
@@ -309,6 +318,7 @@ class Header extends StatelessWidget {
                 child: Text(
                   selectedGame!.name,
                   style: TextStyle(
+                    color: const Color.fromRGBO(255, 255, 255, 1),
                     fontSize: 34,
                     fontWeight: FontWeight.bold,
                     fontFamily: "jersey 25",

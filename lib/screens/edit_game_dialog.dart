@@ -466,6 +466,7 @@ void showEditGameDialog(BuildContext context) {
   ).then((result) {
     if (result != null) {
       // Handle the result (game data)
+      // ignore: avoid_print
       print('New game added: $result');
     }
   });

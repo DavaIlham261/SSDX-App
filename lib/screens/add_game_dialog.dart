@@ -1,7 +1,8 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:ssdx_app/widgets/glass_side_bar.dart';
 
 class AddNewGameDialog extends StatefulWidget {
   const AddNewGameDialog({super.key});
@@ -55,32 +56,13 @@ class _AddNewGameDialogState extends State<AddNewGameDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       backgroundColor: Colors.transparent,
-      child: Container(
-        width: 500,
-        constraints: const BoxConstraints(maxHeight: 600),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              const Color(0xFF1a1a2e),
-              const Color(0xFF16213e),
-              const Color(0xFF0f3460),
-            ],
-          ),
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            color: Colors.white.withOpacity(0.1),
-            width: 1,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.3),
-              blurRadius: 20,
-              spreadRadius: 5,
-            ),
-          ],
-        ),
+      child: GlassSidebar(
+        width: 400,
+        height: 600,
+        blurSigma: 20,
+        blurRadius: 30,
+        spreadRadius: -10,
+        padding: const EdgeInsets.all(0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: Column(
@@ -123,15 +105,12 @@ class _AddNewGameDialogState extends State<AddNewGameDialog> {
                     const Spacer(),
                     IconButton(
                       onPressed: () => Navigator.of(context).pop(),
-                      icon: const Icon(
-                        Icons.close,
-                        color: Colors.white70,
-                      ),
+                      icon: const Icon(Icons.close, color: Colors.white70),
                     ),
                   ],
                 ),
               ),
-              
+
               // Form Content
               Flexible(
                 child: SingleChildScrollView(
@@ -153,21 +132,21 @@ class _AddNewGameDialogState extends State<AddNewGameDialog> {
                           },
                         ),
                         const SizedBox(height: 16),
-                        
+
                         _buildInputField(
                           label: 'Genre',
                           controller: _genreController,
                           icon: Icons.category,
                         ),
                         const SizedBox(height: 16),
-                        
+
                         _buildInputField(
                           label: 'Developer',
                           controller: _developerController,
                           icon: Icons.person,
                         ),
                         const SizedBox(height: 16),
-                        
+
                         _buildInputField(
                           label: 'Release Year',
                           controller: _releaseYearController,
@@ -175,7 +154,7 @@ class _AddNewGameDialogState extends State<AddNewGameDialog> {
                           keyboardType: TextInputType.number,
                         ),
                         const SizedBox(height: 16),
-                        
+
                         _buildInputField(
                           label: 'Description',
                           controller: _descriptionController,
@@ -183,7 +162,7 @@ class _AddNewGameDialogState extends State<AddNewGameDialog> {
                           maxLines: 3,
                         ),
                         const SizedBox(height: 16),
-                        
+
                         _buildFilePickerField(
                           label: 'Executable Path',
                           controller: _executablePathController,
@@ -191,7 +170,7 @@ class _AddNewGameDialogState extends State<AddNewGameDialog> {
                           onTap: _pickExecutablePath,
                         ),
                         const SizedBox(height: 16),
-                        
+
                         _buildFilePickerField(
                           label: 'Game Folder',
                           controller: _gameFolderController,
@@ -203,7 +182,7 @@ class _AddNewGameDialogState extends State<AddNewGameDialog> {
                   ),
                 ),
               ),
-              
+
               // Action Buttons
               Container(
                 padding: const EdgeInsets.all(20),
@@ -276,26 +255,16 @@ class _AddNewGameDialogState extends State<AddNewGameDialog> {
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.05),
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(
-              color: Colors.white.withOpacity(0.1),
-              width: 1,
-            ),
+            border: Border.all(color: Colors.white.withOpacity(0.1), width: 1),
           ),
           child: TextFormField(
             controller: controller,
             validator: validator,
             keyboardType: keyboardType,
             maxLines: maxLines,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-            ),
+            style: const TextStyle(color: Colors.white, fontSize: 14),
             decoration: InputDecoration(
-              prefixIcon: Icon(
-                icon,
-                color: Colors.white54,
-                size: 20,
-              ),
+              prefixIcon: Icon(icon, color: Colors.white54, size: 20),
               border: InputBorder.none,
               contentPadding: const EdgeInsets.symmetric(
                 horizontal: 16,
@@ -335,10 +304,7 @@ class _AddNewGameDialogState extends State<AddNewGameDialog> {
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.05),
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(
-              color: Colors.white.withOpacity(0.1),
-              width: 1,
-            ),
+            border: Border.all(color: Colors.white.withOpacity(0.1), width: 1),
           ),
           child: Row(
             children: [
@@ -346,16 +312,9 @@ class _AddNewGameDialogState extends State<AddNewGameDialog> {
                 child: TextFormField(
                   controller: controller,
                   readOnly: true,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                  ),
+                  style: const TextStyle(color: Colors.white, fontSize: 14),
                   decoration: InputDecoration(
-                    prefixIcon: Icon(
-                      icon,
-                      color: Colors.white54,
-                      size: 20,
-                    ),
+                    prefixIcon: Icon(icon, color: Colors.white54, size: 20),
                     border: InputBorder.none,
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 16,
@@ -387,10 +346,7 @@ class _AddNewGameDialogState extends State<AddNewGameDialog> {
                   ),
                   child: const Text(
                     'Browse',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
@@ -409,25 +365,18 @@ class _AddNewGameDialogState extends State<AddNewGameDialog> {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: isPrimary 
-            ? Colors.blue.withOpacity(0.8)
-            : Colors.white.withOpacity(0.1),
+        backgroundColor:
+            isPrimary
+                ? Colors.blue.withOpacity(0.8)
+                : Colors.white.withOpacity(0.1),
         foregroundColor: Colors.white,
         elevation: 0,
-        padding: const EdgeInsets.symmetric(
-          horizontal: 24,
-          vertical: 12,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       ),
       child: Text(
         label,
-        style: const TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-        ),
+        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
       ),
     );
   }
