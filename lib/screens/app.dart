@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_final_fields
+
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +21,6 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   List<Game> _games = [];
   Game? _selectedGame;
-  // ignore: prefer_final_fields
   List<Game> _filteredGames = [];
   // bool _isLoading = true;
 
@@ -55,15 +56,31 @@ class _AppState extends State<App> {
 
     if (result != null) {
       final newGame = Game(
-        name: result['name'] ?? 'New Game ${_games.length + 1}',
-        genre: result['genre'] ?? "No Genre",
-        developer: result['developer'] ?? 'Unknown Developer',
-        releaseYear: result['releaseYear'] ?? 'Unknown Year',
-        description: result['description'] ?? 'No Description',
+        name: (result['name'] != null && result['name'].toString().trim().isNotEmpty)
+            ? result['name']
+            : 'New Game ${_games.length + 1}',
+        genre: (result['genre'] != null && result['genre'].toString().trim().isNotEmpty)
+            ? result['genre']
+            : "No Genre",
+        developer: (result['developer'] != null && result['developer'].toString().trim().isNotEmpty)
+            ? result['developer']
+            : 'Unknown Developer',
+        releaseYear: (result['releaseYear'] != null && result['releaseYear'].toString().trim().isNotEmpty)
+            ? result['releaseYear']
+            : 'Unknown Year',
+        description: (result['description'] != null && result['description'].toString().trim().isNotEmpty)
+            ? result['description']
+            : 'No Description',
         size: 'N/A',
-        exePath: result['exePath'] ?? '',
-        folderPath: result['folderPath'] ?? '',
+        exePath: (result['exePath'] != null && result['exePath'].toString().trim().isNotEmpty)
+            ? result['exePath']
+            : '',
+        folderPath: (result['folderPath'] != null && result['folderPath'].toString().trim().isNotEmpty)
+            ? result['folderPath']
+            : '',
       );
+
+      print(newGame.toJson());
 
       final updatedGames = [..._games, newGame];
 

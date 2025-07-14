@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 
 import '../models/game.dart';
+import '../widgets/glass_side_bar.dart';
 
 class EditGameDialog extends StatefulWidget {
   final Game? gameToEdit;
@@ -56,8 +57,8 @@ class _EditGameDialogState extends State<EditGameDialog> {
 
   Future<void> _pickExecutablePath() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['exe', 'app', 'deb', 'rpm'],
+      type: FileType.any,
+      // allowedExtensions: ['exe', 'app', 'deb', 'rpm'],
     );
 
     if (result != null && result.files.single.path != null) {
@@ -77,32 +78,13 @@ class _EditGameDialogState extends State<EditGameDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       backgroundColor: Colors.transparent,
-      child: Container(
-        width: 500,
-        constraints: const BoxConstraints(maxHeight: 600),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              const Color(0xFF1a1a2e),
-              const Color(0xFF16213e),
-              const Color(0xFF0f3460),
-            ],
-          ),
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            color: Colors.white.withOpacity(0.1),
-            width: 1,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.3),
-              blurRadius: 20,
-              spreadRadius: 5,
-            ),
-          ],
-        ),
+      child: GlassSidebar(
+        width: 400,
+        height: 600,
+        blurSigma: 20,
+        blurRadius: 30,
+        spreadRadius: -10,
+        padding: const EdgeInsets.all(0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: Column(

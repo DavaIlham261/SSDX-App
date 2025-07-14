@@ -90,8 +90,12 @@ class _SideMenuState extends State<SideMenu> with TickerProviderStateMixin {
       width: 337,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
-        image: const DecorationImage(
-          image: AssetImage('assets/images/side_bg2.jpg'),
+        image: DecorationImage(
+          // image: const NetworkImage('https://i.pinimg.com/736x/1f/99/f9/1f99f9dc6b1875fdce23f35e9081f58c.jpg'),
+          // image: const AssetImage('assets/images/side_bg.jpg'),
+          // image: const AssetImage('assets/images/side_bg2.jpg'),
+          // image: const AssetImage('assets/images/side_bg3.png'),
+          image: const AssetImage('assets/images/side_bg4.jpg'),
           fit: BoxFit.cover,
         ),
         boxShadow: [
